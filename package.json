@@ -1,0 +1,24 @@
+{
+  "name": "kipfin.core",
+  "version": "1.0.0",
+  "description": "Kipfin projects core",
+  "main": "index.js",
+  "dependencies": {
+    "typescript": "^3.5.3"
+  },
+  "files": ["./src"],
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DiegoLing33/kipfin.core.git"
+  },
+  "author": "Diego Ling",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DiegoLing33/kipfin.core/issues"
+  },
+  "homepage": "https://github.com/DiegoLing33/kipfin.core#readme"
+}
