@@ -1,20 +1,19 @@
 /**
  * Перечисления условий договоров
  */
-export enum AdmissionRequestCondition {
-    Paid = "Договор",
-    Free = "Бюджет",
-    NotMind = "Бюджет/Договор"
-}
+import DateUtils from "../DateUtils/DateUtils";
+import {AConditions} from "./AConditions";
 
 /**
  * Параметры заявки
  */
 export interface AdmissionRequestProps {
-    type?: AdmissionRequestCondition,
-    original?: boolean;
+    type?: AConditions,
+    original?: boolean|string;
     rate?: number;
-    date?: Date;
+    date?: Date|string;
+    name?: string;
+    spec?: string;
 }
 
 /**
@@ -34,10 +33,12 @@ export default class AdmissionRequest {
         }
     }
 
-    public readonly type: AdmissionRequestCondition;
+    public readonly type: AConditions;
     public readonly original: boolean;
     public readonly rate: number;
     public readonly date: Date;
+    public readonly name: string;
+    public readonly spec: string;
 
 
     /**
@@ -48,12 +49,10 @@ export default class AdmissionRequest {
          * Тип договора
          * @type {string}
          */
-        this.type = props.type || AdmissionRequestCondition.Paid;
+        this.type = props.type || AConditions.Paid;
 
-        /**
-         * Оригинал
-         * @type {boolean}
-         */
+
+        if(props.original !== undefined && typeof props.original === "string") props.original = props.original.includes("гинал");
         this.original = props.original || false;
 
         /**
@@ -62,11 +61,14 @@ export default class AdmissionRequest {
          */
         this.rate = props.rate || 0;
 
-        /**
-         * The date
-         * @type {Date}
-         */
-        this.date = props.date || new Date();
+        if(props.date){
+            if(typeof props.date === "string") this.date = DateUtils.getDateFromRusFormat(props.date);
+            else this.date = props.date || new Date();
+        }else {
+            this.date = new Date();
+        }
+        this.name = props.name || "Unnamed";
+        this.spec = props.spec || "SPO";
     }
 
 }

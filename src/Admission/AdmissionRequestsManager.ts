@@ -1,10 +1,10 @@
 /**
  * Менеджер заявок
  */
-import AdmissionRequest, {AdmissionRequestCondition} from "./AdmissionRequest";
+// import AdmissionRequest, {AdmissionRequestCondition} from "./AdmissionRequest";
 import DateUtils from "../DateUtils/DateUtils";
-import Specialization from "./Specialization";
-
+// import Specialization from "./Specialization.ts.txt";
+/*
 const PKS = new Specialization({
     title: "Программирование в компьютерных системах",
     shortTitle: "ПКС",
@@ -50,52 +50,4 @@ export interface IFormattedChangesArray {
     date: Date | any;
     value: any;
     was: any;
-}
-
-/**
- * Менеджер заявок
- */
-export default class AdmissionRequestsManager{
-
-    /**
-     * Загружает заявки
-     * @param callback
-     */
-    static loadRequests(callback: () => void){
-        SpecializationsList.forEach(value => value.clear());
-        const xhr = new XMLHttpRequest();
-        const url = "http://stat.kipfin.ru/php/data.json?" + Date.now();
-        xhr.onload = () => {
-            let data = JSON.parse(xhr.responseText);
-            for (let row of data) {
-                let specIndex = getSpecIndexByTitle(row.spec);
-                let spec = SpecializationsList[specIndex];
-                spec.add(new AdmissionRequest({
-                    rate: row.rate,
-                    type: row.type,
-                    original: row.original === "Оригинал",
-                    date: DateUtils.getDateFromRusFormat(row.date)
-                }));
-            }
-            callback();
-        };
-        xhr.open("GET", url);
-        xhr.send();
-    }
-
-    /**
-     * Загружает изменения
-     * @param callback
-     */
-    static loadChanges(callback: (data: IFormattedChangesArray[]) => void){
-        const xhr = new XMLHttpRequest();
-        const url = "http://stat.kipfin.ru/php/data.changes.json?" + Date.now();
-        xhr.onload = () => {
-            let data = JSON.parse(xhr.responseText);
-            callback(data);
-        };
-        xhr.open("GET", url);
-        xhr.send();
-    }
-
-}
+}*/

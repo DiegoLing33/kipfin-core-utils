@@ -46,6 +46,18 @@ export default class DateUtils {
     }
 
     /**
+     * Возвращает сформированную русскую дату
+     * @param date
+     */
+    static getRusDateString(date: Date): string{
+        return [
+            String(date.getDate()).padStart(2, "0"),
+            String(date.getMonth() + 1).padStart(2, "0"),
+            String(date.getFullYear())
+        ].join(".");
+    }
+
+    /**
      * Returns the day of weec name
      * @param date
      */
